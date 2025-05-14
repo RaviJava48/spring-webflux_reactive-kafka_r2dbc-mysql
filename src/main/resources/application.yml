@@ -1,0 +1,17 @@
+spring:
+  r2dbc:
+    url: r2dbc:pool:mysql://localhost:3306/order_service
+    username: root
+    password: root
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql  #Spring uses this property to execute the query in schema.sql (resources folder)
+logging:
+  level:
+    org.springframework.r2dbc: DEBUG
+
+kafka:
+  bootstrap-servers: localhost:9092
+  topic: order-topic
