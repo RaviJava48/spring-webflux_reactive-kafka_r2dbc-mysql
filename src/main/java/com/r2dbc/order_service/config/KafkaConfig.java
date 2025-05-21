@@ -43,7 +43,7 @@ public class KafkaConfig {
                 ConsumerConfig.GROUP_ID_CONFIG, "order-group",
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
-                ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"
+                ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest"
         );
         return ReceiverOptions.<String, String>create(props)
                 .subscription(List.of(topic));

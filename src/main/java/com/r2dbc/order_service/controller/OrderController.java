@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
+
 @RestController
 @RequestMapping("/api/v1/orders")
 public class OrderController {
@@ -27,8 +29,12 @@ public class OrderController {
                 .log();
     }
 
-    @GetMapping("/")
-    public Flux<Order> getAllOrders() {
+    @GetMapping()
+    public Flux<Order> getAllOrders(@RequestParam(value = "name", required = false) String customerName) {
+        if(!Objects.isNull(customerName)) {
+            return orderService.getOrdersByCustomerName(customerName);
+        }
+
         return orderService.getAllOrders().log();
     }
 

@@ -7,7 +7,8 @@ spring:
   sql:
     init:
       mode: always
-      schema-locations: classpath:schema.sql  #Spring uses this property to execute the query in schema.sql (resources folder)
+      schema-locations: classpath:schema.sql  #Spring uses this property to execute the query in schema.sql (resources folder) and create table in DB
+
 logging:
   level:
     org.springframework.r2dbc: DEBUG

@@ -3,6 +3,7 @@ package com.r2dbc.order_service.service;
 import com.r2dbc.order_service.domain.Order;
 import com.r2dbc.order_service.kafka.KafkaProducer;
 import com.r2dbc.order_service.repository.OrderRepository;
+import org.apache.logging.log4j.LogBuilder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -51,5 +52,9 @@ public class OrderService {
         return orderRepository.findById(orderId)
                 .flatMap(order -> orderRepository.delete(order).then(Mono.just("Order deleted successfully")));
 
+    }
+
+    public Flux<Order> getOrdersByCustomerName(String customerName) {
+        return orderRepository.findByCustomerName(customerName);
     }
 }

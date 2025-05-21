@@ -15,7 +15,7 @@ public class Order {
     private String orderId;
 
     @NotNull(message = "Customer name must not be NULL")
-    @NotBlank(message = "Customer name can't be blank")
+    @NotBlank(message = "Customer name can't be blank")  // Can't be empty
     private String customerName;
 
     private BigDecimal totalAmount;
